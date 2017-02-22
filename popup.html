@@ -1,0 +1,38 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>OnionGatherer</title>
+    <script src="./jquery-2.2.3.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="./OnionGatherer.js"></script>
+  </head>
+  <body>
+    <div id="status"></div>
+    <img id="image-result" hidden>
+    
+    <p>
+      <img src='./greenCircle.png' width="10" height="10"/>
+      Online Website
+    </p>
+    
+    <p>
+      <img src='./redCircle.png' width="10" height="10"/>
+      Offline Website
+    </p>
+
+    <p>
+      <img src='./orangeCircle.png' width="10" height="10"/>
+      Elaborating...
+    </p>
+
+    <input type="checkbox" id="disabled" />
+    Disable
+    <br>
+
+  </body>
+</html>
+

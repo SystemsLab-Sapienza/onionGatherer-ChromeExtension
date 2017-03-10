@@ -20,7 +20,7 @@ The user, surfing between websites containing the Hidden service addresses, will
 
 Insert into the variable HOST_URL in the file named OnionGatherer.js the url of your own Host.
 
-It is possible to use our server by setting the HOST_URL variable to "https://151.100.179.79/onionGatherer".
+It is possible to use our server by setting the HOST_URL variable to "https://lamorgiam.redi.uniroma1.it/onionGatherer".
 
 Open the Google Chrome extensions page by typing in the address bar
 ```sh

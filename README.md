@@ -31,4 +31,4 @@ Click on the button:
 
 ![Load unpacked extension...](figures/button.png) 
 
-and load the zip project file
+and load the project folder

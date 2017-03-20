@@ -1,16 +1,16 @@
-  var HOST_URL = 'xxxxx'
+  var HOST_URL = 'XXXXX'
 
   var body = document.body;
   var textContent = body.innerText;
 
-  var split = textContent.split(/[\r\n\t\"\'();\\|<>\s]+/g);
+  var split = textContent.split(/[\r\n\t\"\'();,#@\\|<>\s]+/g);
   var onions = []
 
   substring = "..."
 
   for(var i = 0; i < split.length; i++) {
     // Insert in onions every string that matches with the RegEx
-    if(split[i].match(/^(http(s)?:\/\/)?.{16}(\.onion)\/?.*$/g)) {
+    if(split[i].match(/(http(s)?:\/\/)?(www.)?.{16}\.onion(\/[\S]*|)/g)) {
       if(split[i].indexOf(substring) == -1) {
         onions.push(split[i]);
       }
@@ -39,22 +39,32 @@
 
         // Insert the green, red or orange marker, according to the hidden service's status
         findAndReplaceDOMText(container, {
-          find: /(http:\/\/)?\b[\w\d]{16}\.onion(\/[\S]*|)/g,
+          find: /(http(s)?:\/\/)?(www.)?.{16}\.onion(\/[\S]*|)/g,
           replace: function(portion) {
+
             var element = document.createElement('span');
 
-              if(responseData['onions'][portion.text] == 1) {
-                element.innerHTML=portion.text + "&nbsp;<img src='" + greenImgURL + "' width=\"10\" height=\"10\" />";
-              }
-              else if(responseData['onions'][portion.text] == -1) {
-                element.innerHTML=portion.text + "&nbsp;<img src='" + redImgURL + "' width=\"10\" height=\"10\" />";
-              }
-              else if(responseData['onions'][portion.text] == 0) {
-                element.innerHTML=portion.text + "&nbsp;<img src='" + orangeImgURL + "' width=\"10\" height=\"10\" />";
-              }
-              else {
-                element.innerHTML=portion.text
-              }
+            var status = responseData['onions'][portion.text];
+
+            switch(status) {
+              
+              case 1:
+                element.innerHTML = portion.text + "&nbsp;<img src='" + greenImgURL + "' width=\"10\" height=\"10\" />";
+                break;
+
+              case -1:
+                element.innerHTML = portion.text + "&nbsp;<img src='" + redImgURL + "' width=\"10\" height=\"10\" />";
+                break;
+
+              case 0:
+                element.innerHTML = portion.text + "&nbsp;<img src='" + orangeImgURL + "' width=\"10\" height=\"10\" />";
+                break;
+
+              default:
+                element.innerHTML = portion.text;
+                break;
+            }
+
             return element;
           }
         });

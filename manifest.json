@@ -1,32 +1,28 @@
 {
+
   "manifest_version": 2,
 
   "name": "Onion Gatherer",
+
   "description": "This extension allows to check the status of hidden services found in the websites",
+
   "version": "0.0.0.1",
 
-  "permissions": ["tabs",
-         "*://*/*", 
-        "http://*/*", 
-        "https://*/*",
-        "<all_urls>"
-        ],
+  "permissions": ["activeTab", "*://*/*", "contextMenus"],
+
+  "web_accessible_resources": ["greenCircle.png", "redCircle.png", "orangeCircle.png"],
 
   "browser_action": {
     "default_icon": "onion.png",
     "default_popup": "popup.html"
   },
-  
+
   "icons": {
     "128": "onion_128.png"
   },
 
-  "web_accessible_resources": ["greenCircle.png", "redCircle.png", "orangeCircle.png"],
-
-  "content_scripts": [
-   {
-     "matches": ["http://*/*", "https://*/*"],
-     "js": ["./jquery-2.2.3.min.js","findAndReplaceDOMText.js","./OnionGatherer.js"]
-   }
-  ]
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  }
 }

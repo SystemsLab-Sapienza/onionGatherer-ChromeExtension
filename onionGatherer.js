@@ -1,4 +1,4 @@
-  var HOST_URL = 'XXXXX'
+  var HOST_URL = 'XXXXX';
 
   var body = document.body;
   var textContent = body.innerText;
@@ -19,9 +19,9 @@
 
   var onionsJson = JSON.stringify({onions:onions, website: window.location.href});
 
-  var greenImgURL = chrome.extension.getURL("greenCircle.png");
-  var redImgURL = chrome.extension.getURL("redCircle.png");
-  var orangeImgURL = chrome.extension.getURL("orangeCircle.png");
+  var greenImgURL = chrome.runtime.getURL("greenCircle.png");
+  var redImgURL = chrome.runtime.getURL("redCircle.png");
+  var orangeImgURL = chrome.runtime.getURL("orangeCircle.png");
 
   $.ajax({
     type: 'POST',
